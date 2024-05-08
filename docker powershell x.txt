@@ -1,0 +1,318 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\wagd> docker run -p 3307:3306 --name my-mysql -e MYSQL_ROOT_PASSWORD=root -d mysql/mysql-server:5.7
+Unable to find image 'mysql/mysql-server:5.7' locally
+5.7: Pulling from mysql/mysql-server
+d70f3c0cccba: Pull complete
+e7dc89aa39f7: Pull complete
+76cc4215b650: Pull complete
+25b0bb53e492: Pull complete
+349b52643cc3: Pull complete
+62ddcf4a4134: Pull complete
+c91c597e717d: Pull complete
+c7e93886e496: Pull complete
+Digest: sha256:1178cdd375f758968cd834ac4057bae41307e64b7c69a9e145896e7b11f48064
+Status: Downloaded newer image for mysql/mysql-server:5.7
+b73300ab4491e20bd713839bccb3820e2c1382b8fc20b00a64e6ec3fe1e00a32
+PS C:\Users\wagd> docker exec -it my-mysql  /bin/bash
+bash-4.2# mysql -uroot -p -A
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 7
+Server version: 5.7.41 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> select user,host from mysql.user;
++---------------+-----------+
+| user          | host      |
++---------------+-----------+
+| healthchecker | localhost |
+| mysql.session | localhost |
+| mysql.sys     | localhost |
+| root          | localhost |
++---------------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> update mysql.user set host='%' where user-'root';
+ERROR 1292 (22007): Truncated incorrect DOUBLE value: 'root
+
+               '
+mysql> update mysql.user set host='%' where user='root';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> flush privileges ;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> exit
+Bye
+bash-4.2# exit
+exit
+
+What's next?
+  Try Docker Debug for seamless, persistent debugging tools in any container or image → docker debug my-mysql
+  Learn more at https://docs.docker.com/go/debug-cli/
+PS C:\Users\wagd> mysql -uroot
+mysql : The term 'mysql' is not recognized as the name of a
+cmdlet, function, script file, or operable program. Check the
+spelling of the name, or if a path was included, verify that the
+path is correct and try again.
+At line:1 char:1
++ mysql -uroot
++ ~~~~~
+    + CategoryInfo          : ObjectNotFound: (mysql:String) [], C
+   ommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\wagd> mysql -uroot
+mysql : The term 'mysql' is not recognized as the name of a
+cmdlet, function, script file, or operable program. Check the
+spelling of the name, or if a path was included, verify that the
+path is correct and try again.
+At line:1 char:1
++ mysql -uroot
++ ~~~~~
+    + CategoryInfo          : ObjectNotFound: (mysql:String) [], C
+   ommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\wagd> mysql -uroot
+mysql : The term 'mysql' is not recognized as the name of a
+cmdlet, function, script file, or operable program. Check the
+spelling of the name, or if a path was included, verify that the
+path is correct and try again.
+At line:1 char:1
++ mysql -uroot
++ ~~~~~
+    + CategoryInfo          : ObjectNotFound: (mysql:String) [], C
+   ommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\wagd> mysql -uroot -p -P3307:3306 -h127.0.0.1
+mysql : The term 'mysql' is not recognized as the name of a
+cmdlet, function, script file, or operable program. Check the
+spelling of the name, or if a path was included, verify that the
+path is correct and try again.
+At line:1 char:1
++ mysql -uroot -p -P3307:3306 -h127.0.0.1
++ ~~~~~
+    + CategoryInfo          : ObjectNotFound: (mysql:String) [], C
+   ommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\wagd> mysql -uroot -p -P3307:3306 -h127.0.0.1
+mysql : The term 'mysql' is not recognized as the name of a
+cmdlet, function, script file, or operable program. Check the
+spelling of the name, or if a path was included, verify that the
+path is correct and try again.
+At line:1 char:1
++ mysql -uroot -p -P3307:3306 -h127.0.0.1
++ ~~~~~
+    + CategoryInfo          : ObjectNotFound: (mysql:String) [], C
+   ommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\wagd> mysql -uroot
+mysql : The term 'mysql' is not recognized as the name of a
+cmdlet, function, script file, or operable program. Check the
+spelling of the name, or if a path was included, verify that the
+path is correct and try again.
+At line:1 char:1
++ mysql -uroot
++ ~~~~~
+    + CategoryInfo          : ObjectNotFound: (mysql:String) [], C
+   ommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\wagd> login mysql
+login : The term 'login' is not recognized as the name of a
+cmdlet, function, script file, or operable program. Check the
+spelling of the name, or if a path was included, verify that the
+path is correct and try again.
+At line:1 char:1
++ login mysql
++ ~~~~~
+    + CategoryInfo          : ObjectNotFound: (login:String) [], C
+   ommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\wagd> mysql
+mysql : The term 'mysql' is not recognized as the name of a
+cmdlet, function, script file, or operable program. Check the
+spelling of the name, or if a path was included, verify that the
+path is correct and try again.
+At line:1 char:1
++ mysql
++ ~~~~~
+    + CategoryInfo          : ObjectNotFound: (mysql:String) [], C
+   ommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\wagd> docker exec -it my-mysql  /bin/bash
+bash-4.2# mysql -uroot -p -P3307 -h127.0.0.1
+Enter password:
+ERROR 2003 (HY000): Can't connect to MySQL server on '127.0.0.1' (111)
+bash-4.2# mysql -uroot -p -P3307 -h127.0.0.1
+Enter password:
+ERROR 2003 (HY000): Can't connect to MySQL server on '127.0.0.1' (111)
+bash-4.2# mysql -uroot -p -P3307 -h127.0.0.1
+Enter password:
+ERROR 2003 (HY000): Can't connect to MySQL server on '127.0.0.1' (111)
+bash-4.2# mysql -uroot -p -P3307 -h127.0.0.1
+Enter password:
+ERROR 2003 (HY000): Can't connect to MySQL server on '127.0.0.1' (111)
+bash-4.2# mysql -uroot -p -P3307 -h127.0.0.1
+Enter password:
+ERROR 2003 (HY000): Can't connect to MySQL server on '127.0.0.1' (111)
+bash-4.2# mysql -uroot -p -P3307 -h127.0.0.1
+Enter password:
+ERROR 2003 (HY000): Can't connect to MySQL server on '127.0.0.1' (111)
+bash-4.2# mysql -uroot -p -P3307 -h127.0.0.1
+Enter password:
+ERROR 2003 (HY000): Can't connect to MySQL server on '127.0.0.1' (111)
+bash-4.2# exit\
+> exit
+bash: exitexit: command not found
+bash-4.2# exit
+exit
+
+What's next?
+  Try Docker Debug for seamless, persistent debugging tools in any container or image → docker debug my-mysql
+  Learn more at https://docs.docker.com/go/debug-cli/
+PS C:\Users\wagd> docker stop my-mysql
+my-mysql
+PS C:\Users\wagd> docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+PS C:\Users\wagd> docker run
+"docker run" requires at least 1 argument.
+See 'docker run --help'.
+
+Usage:  docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+
+Create and run a new container from an image
+PS C:\Users\wagd> docker run my-mysql
+Unable to find image 'my-mysql:latest' locally
+docker: Error response from daemon: pull access denied for my-mysql, repository does not exist or may require 'docker login': denied: requested access to the resource is denied.
+See 'docker run --help'.
+PS C:\Users\wagd> docker ps
+CONTAINER ID   IMAGE                    COMMAND                  CREATED          STATUS                             PORTS
+                 NAMES
+b73300ab4491   mysql/mysql-server:5.7   "/entrypoint.sh mysq…"   29 minutes ago   Up 13 seconds (health: starting)   33060/tcp, 0.0.0.0:3307->3306/tcp   my-mysql
+PS C:\Users\wagd> mysql -uroot
+mysql : The term 'mysql' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling
+of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ mysql -uroot
++ ~~~~~
+    + CategoryInfo          : ObjectNotFound: (mysql:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\wagd> mysql -uroot -p -P3307:3306 -h127.0.0.1
+mysql : The term 'mysql' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling
+of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ mysql -uroot -p -P3307:3306 -h127.0.0.1
++ ~~~~~
+    + CategoryInfo          : ObjectNotFound: (mysql:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\wagd> mysql -uroot -p -P3307 -h127.0.0.1
+mysql : The term 'mysql' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling
+of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ mysql -uroot -p -P3307 -h127.0.0.1
++ ~~~~~
+    + CategoryInfo          : ObjectNotFound: (mysql:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\wagd> my-mysql -uroot -p -P3307 -h127.0.0.1
+my-mysql : The term 'my-mysql' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the
+spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ my-mysql -uroot -p -P3307 -h127.0.0.1
++ ~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (my-mysql:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\wagd> docker-sqlserver -uroot -p -P3307 -h127.0.0.1
+docker-sqlserver : The term 'docker-sqlserver' is not recognized as the name of a cmdlet, function, script file, or operable
+program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ docker-sqlserver -uroot -p -P3307 -h127.0.0.1
++ ~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (docker-sqlserver:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\wagd> docker exec -it my-mysql  /bin/bash
+bash-4.2# mysql -uroot -p -P3307 -h127.0.0.1
+Enter password:
+ERROR 2003 (HY000): Can't connect to MySQL server on '127.0.0.1' (111)
+bash-4.2# mysql -uroot -p -P3307 -h127.0.0.1
+Enter password:
+ERROR 2003 (HY000): Can't connect to MySQL server on '127.0.0.1' (111)
+bash-4.2# mysql -uroot -p -P3307 -h127.0.0.1
+Enter password:
+ERROR 2003 (HY000): Can't connect to MySQL server on '127.0.0.1' (111)
+bash-4.2# mysql -uroot -p -A
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 19
+Server version: 5.7.41 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases
+    -> ;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| xo                 |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| student            |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> show tables;
+ERROR 1046 (3D000): No database selected
+mysql>
