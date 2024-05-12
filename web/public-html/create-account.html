@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Fcds University</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="student-login.html">Login as Student</a></li>
+                <li><a href="admin.html">Login as Admin</a></li>
+                <li><a href="create-account.html">Create New Account</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Create New Account</h2>
+        <form action="create-account.php" method="POST" class="account-form">
+            <label for="firstName">First Name:</label><br>
+            <input type="text" id="firstName" name="firstName" required><br><br>
+
+            <label for="lastName">Last Name:</label><br>
+            <input type="text" id="lastName" name="lastName" required><br><br>
+
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password" required><br><br>
+
+            <input type="submit" value="Create Account">
+        </form>
+    </main>
+
+    <footer>
+        <p>Contact us at <a href="mailto:fcds-dean@alexu.edu.eg">@fcds-dean@alexu.edu.eg</a> or visit us at the address in Alexandria.</p>
+    </footer>
+</body>
+</html>
