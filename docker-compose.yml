@@ -1,0 +1,32 @@
+
+services:
+  db:
+    build:
+      context: ./db
+      dockerfile: Dockerfile
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: studentdatabase
+    volumes:
+      - ./db/student.sql:/docker-entrypoint-initdb.d/student.sql  # Assuming student.sql contains all the initialization SQL.
+    ports:
+      - "3306:3306"
+  node-app:
+    build:
+      context: ./web/
+      dockerfile: Server.dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    depends_on:
+      - node-app
+
+volumes:
+  db-data:
